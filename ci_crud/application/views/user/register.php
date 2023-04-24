@@ -20,7 +20,7 @@
                                                 <div class="form-outline flex-fill mb-0">
                                                 <span id="error-username"></span>
                                                     <input type="text" name="username" id="username" class="form-control" value="<?php echo set_value('username') ?>"/>
-                                                    <label class="form-label" for="Username">Your Name</label>
+                                                    <label class="form-label" for="Username">Your Name </label>
                                                 </div>
                                             </div>
 

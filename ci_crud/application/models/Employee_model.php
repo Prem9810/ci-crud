@@ -10,7 +10,7 @@ class Employee_model extends CI_Model {
     public function add($data)
     {
         $status = $this->db->insert('employee', $data);
-        return  $status;
+        return   $this->db->insert_id();
           
     }
 
@@ -53,11 +53,12 @@ class Employee_model extends CI_Model {
         $post = array(
             'name' => $data['name'],
             'email' => $data['email'],
+            'image' => $data['image'],
             'address' => $data['address'],
             'phone' => $data['phone']
            
         );
-        
+        // print_r($post);die;
         $this->db->where('emp_id', $data['emp_id']);
         $status = $this->db->update('employee', $post);
          
