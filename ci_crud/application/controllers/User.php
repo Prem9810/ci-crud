@@ -49,11 +49,19 @@ class User extends CI_Controller
 					 'email' => $this->input->post('email'),
 					 'password' => $this->input->post('password'),				
 				 );
-				  $this->user->register($data);
+				  $user_id = $this->user->register($data);
+				  $session_data = [
+					'username' => $this->input->post('username'),
+					'email' => $this->input->post('email'),
+					'user_id' => $user_id,
+
+				  ];
+				  $this->session->set_userdata($session_data);
 				
 			 }
 			 print_r(json_encode($json));
 		}else{
+			
 			$this->load->view('common/header');
 			$this->load->view('user/register');
 			$this->load->view('common/footer');
@@ -117,10 +125,13 @@ class User extends CI_Controller
 						$userdata = array(
 							'username'  => $checkUserPassword['username'],
 							'email'     => $checkUserPassword['email'],
+							'user_id'     =>  $checkUser,
 							'logged_in' => TRUE
-					   );
+					    );
+					   
 					
-					$this->session->set_userdata($userdata);					
+					$this->session->set_userdata($userdata);
+
 					 }else{
 						$json['error'] = 1 ;
 						$json['error_message'] = [					

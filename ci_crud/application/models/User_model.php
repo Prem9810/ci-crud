@@ -9,8 +9,9 @@ class User_model extends CI_Model {
 
     public function register($data)
     {
-        $status = $this->db->insert('users', $data);
-        return  $status;
+        $this->db->insert('users', $data);
+        $id =  $this->db->insert_id();
+        return  $id;
           
     }
 

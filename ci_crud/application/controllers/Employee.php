@@ -49,9 +49,6 @@ class Employee extends CI_Controller
         $data['employees'] = $this->employee->getUser($config['per_page'], $page);
 // print_r($data['employees']);die;
         $this->pagination->initialize($config);
-
-
-
         $data['pagination'] = $this->pagination->create_links();
 
         $data['result'] = "<div class=\"hint-text\">Showing <b>" . $from . "</b> to <b>" . $to . "</b>  out of <b>" . $user_count . "</b> ( <b>" . ceil($user_count / $config['per_page']) . "</b> Pages ) </div>";
